@@ -76,9 +76,16 @@ ul{
     display: flex;
     flex-direction: column;
     align-content: center;
-    box-shadow: 0px 2px 10px #1115;
+    box-shadow: 0px 2px 7px #1115;
     position: relative;
     margin: 10px;
+    transition: .7s;
+}
+.row .card:hover{
+    box-shadow: 2px 2px 13px #1116;
+    cursor: pointer;
+    transform: scale(1.04);
+    transition: .5s;
 }
 .row .title{
     position: absolute;
