@@ -172,3 +172,8 @@ sup{
         padding: 10px 15px;
     }
   }
+@media print{
+    .box-item{
+        display: none;
+    }
+}
