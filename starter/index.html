@@ -45,24 +45,26 @@
 						<div class="modal-header bg-dark">
 							<h4 class="modal-title text-white">To do (<span id="to-do-tasks-count">5</span>)</h4>
 						</div>
-						<div class="" id="to-do-tasks">
-							<!-- TO DO TASKS HERE -->
-							<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="to-do-box">
-								<div class="col-2 col-md-1">
-									<i class="fa-regular fa-circle-question fa-2x text-success"></i>
-								</div>
-								<div class="text-start col">
-									<div class="text-dark fw-bold">Keep all the updated requirements in one place</div>
-									<div class="">
-										<div class="list-item text-body">#1 created in 2022-10-08</div>
-										<div class="list-item" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+						<div id="to-do-tasks">
+							<div class="" id="to-do-box">
+								<!-- TO DO TASKS HERE -->
+								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
+									<div class="col-2 col-md-1">
+										<i class="fa-regular fa-circle-question fa-2x text-success"></i>
 									</div>
-									<div class="mt-3">
-										<span class="btn btn-primary btn-sm">High</span>
-										<span class="btn btn-outline-secondary btn-sm">Feature</span>
+									<div class="text-start col">
+										<div class="text-dark fw-bold" id="title">Keep all the updated requirements in one place</div>
+										<div class="">
+											<div class="list-item text-body" id="date">#1 created in 2022-10-08</div>
+											<div class="list-item" id="description" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+										</div>
+										<div class="mt-3">
+											<span class="btn btn-primary btn-sm">High</span>
+											<span class="btn btn-outline-secondary btn-sm">Feature</span>
+										</div>
 									</div>
-								</div>
-							</button>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -204,21 +206,43 @@
 	<script>
 			var toDoBox = document.querySelector("#to-do-box"),
 				toDoTasks = document.querySelector("#to-do-tasks"),
-				container = document.querySelector("#to-do-container"),
-				i = 0;
+				// container = document.querySelector("#to-do-container"),
+				// title = container.querySelector("#title"),
+				// date = container.querySelector("#date"),
+				// description = container.querySelector("#description"),
+				title = toDoBox.querySelector('#title');
+				date = toDoBox.querySelector('#date');
+				description = toDoBox.querySelector('#description');
 			const elements = [];
 
 			for(let task of tasks){
-				elements[i] = toDoBox.innerHTML;
+				// elements[i] = toDoBox;
+				// elements[i].children[1].children[0].innerText = task.title;
+				// var result = toDoBox.querySelector('#title').innerText;
+				// console.log(result);
+				title.innerText = task.title;
+				date.innerText = task.date;
+				description.innerText = task.description;
+				console.log(toDoTasks);
+				console.log(toDoTasks.innerHTML += toDoBox.innerHTML);
+				// console.log(toDoTasks.innerHTML += toDoTasks.querySelector("#to-do-box").innerHTML);
+				// console.log(toDoTasks.innerHTML += toDoBox.querySelector('#title').innerHTML);
+				// console.log(toDoBox.querySelector('#title').innerText = task.title);
 				// elements[i].innerText = task.title;
 				// console.log(elements);
-				i++;
 			}
 			// console.log(toDoTasks.outerHTML =  toDoTasks.outerHTML + toDoTasks.outerHTML);
 			// console.log(toDoBox.children[1].innerHTML);
-			// // console.log(toDoBox.children[1].children[0].innerText = "salah");
+			// console.log(toDoBox.children[1].children[0].innerText = "salah");
 			// console.log(elements);
-			toDoTasks.innerHTML = elements;
+
+			// for(let element of elements){
+			// 	console.log(element.querySelector("#title"));
+			// 	console.log(element.querySelector("#date"));
+			// 	console.log(element.querySelector("#description"));
+			// 	element.children[1].children[0].innerText = "";
+			// 	toDoTasks.innerHTML += element.innerHTML;
+			// }
 		
 	</script>
 	<!-- ================== END core-js ================== -->
