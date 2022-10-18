@@ -208,33 +208,42 @@
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/data.js"></script>
 	<script>
-		for(let task of tasks){
-		}
-
-			const classes = ['to-do-parent' , 'in-progress-parent' , 'done-parent'],
-				  statuses = ['To Do' , 'In Progress' , 'Done'];
+			const finder = [
+				{
+					class  : 'to-do-parent',
+					status : 'To Do'
+				},
+				{
+					class  : 'in-progress-parent',
+					status : 'In Progress'
+				},
+				{
+					class  : 'done-parent',
+					status : 'Done'
+				}
+			];
+			// const classes = ['to-do-parent' , 'in-progress-parent' , 'done-parent'],
+			// 	  statuses = ['To Do' , 'In Progress' , 'Done'];
 			function show(data , selector , status) {
 
 				var parent = document.querySelector("#" + selector),
-					childe = parent.querySelector("#tasks"),
-					title = childe.querySelector('#title'),
-					date = childe.querySelector('#date'),
-					description = childe.querySelector('#description'),
-					i = 0;
+					child = parent.querySelector("#tasks"),
+					title = child.querySelector('#title'),
+					date = child.querySelector('#date'),
+					description = child.querySelector('#description');
 				for(let row of data){
 					// var parent = document.querySelector("#" + classes[i]);
 					if(row.status == status){
 						title.innerText = row.title;
 						date.innerText = row.date;
 						description.innerText = row.description;
-						parent.innerHTML += childe.innerHTML;
+						parent.innerHTML += child.innerHTML;
 					}
-					i++;
 				}
 			}
-			show(tasks , classes[0] , statuses[0]);
-			show(tasks , classes[1] , statuses[1]);
-			show(tasks , classes[2] , statuses[2]);
+			for(let find of finder){
+				show(tasks , find.class , find.status);
+			}
 	</script>
 	<!-- ================== END core-js ================== -->
 </body>
