@@ -206,44 +206,16 @@
 	<script>
 			var toDoBox = document.querySelector("#to-do-box"),
 				toDoTasks = document.querySelector("#to-do-tasks"),
-				// container = document.querySelector("#to-do-container"),
-				// title = container.querySelector("#title"),
-				// date = container.querySelector("#date"),
-				// description = container.querySelector("#description"),
-				title = toDoBox.querySelector('#title');
-				date = toDoBox.querySelector('#date');
+				title = toDoBox.querySelector('#title'),
+				date = toDoBox.querySelector('#date'),
 				description = toDoBox.querySelector('#description');
-			const elements = [];
 
 			for(let task of tasks){
-				// elements[i] = toDoBox;
-				// elements[i].children[1].children[0].innerText = task.title;
-				// var result = toDoBox.querySelector('#title').innerText;
-				// console.log(result);
 				title.innerText = task.title;
 				date.innerText = task.date;
 				description.innerText = task.description;
-				console.log(toDoTasks);
-				console.log(toDoTasks.innerHTML += toDoBox.innerHTML);
-				// console.log(toDoTasks.innerHTML += toDoTasks.querySelector("#to-do-box").innerHTML);
-				// console.log(toDoTasks.innerHTML += toDoBox.querySelector('#title').innerHTML);
-				// console.log(toDoBox.querySelector('#title').innerText = task.title);
-				// elements[i].innerText = task.title;
-				// console.log(elements);
+				toDoTasks.innerHTML += toDoBox.innerHTML;
 			}
-			// console.log(toDoTasks.outerHTML =  toDoTasks.outerHTML + toDoTasks.outerHTML);
-			// console.log(toDoBox.children[1].innerHTML);
-			// console.log(toDoBox.children[1].children[0].innerText = "salah");
-			// console.log(elements);
-
-			// for(let element of elements){
-			// 	console.log(element.querySelector("#title"));
-			// 	console.log(element.querySelector("#date"));
-			// 	console.log(element.querySelector("#description"));
-			// 	element.children[1].children[0].innerText = "";
-			// 	toDoTasks.innerHTML += element.innerHTML;
-			// }
-		
 	</script>
 	<!-- ================== END core-js ================== -->
 </body>
