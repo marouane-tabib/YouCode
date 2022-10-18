@@ -66,8 +66,21 @@ function initTaskForm() {
     // Hide all action buttons
 }
 
-function reloadTasks() {
-    // Remove tasks elements
 
-    // Set Task count
+function show(data , selector , status) {
+    // Varaibles 
+        var parent = document.querySelector("#" + selector),
+            child = parent.querySelector("#tasks"),
+            title = child.querySelector('#title'),
+            date = child.querySelector('#date'),
+            description = child.querySelector('#description');
+    // Actions
+        for(let row of data){
+            if(row.status == status){
+                title.innerText = row.title;
+                date.innerText = row.date;
+                description.innerText = row.description;
+                parent.innerHTML += child.innerHTML;
+            }
+        }
 }

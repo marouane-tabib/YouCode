@@ -1,6 +1,21 @@
 /* 
-    This file contains an array of objects as tasks, to be loaded in the execution.
+    This file contains an array of objects as tasks and finders, to be loaded in the execution.
 */
+
+const finder = [
+    {
+        class  : 'to-do-parent',
+        status : 'To Do'
+    },
+    {
+        class  : 'in-progress-parent',
+        status : 'In Progress'
+    },
+    {
+        class  : 'done-parent',
+        status : 'Done'
+    }
+];
 var tasks = [
     {
         'title'         :   'Keep all the updated requirements in one place',

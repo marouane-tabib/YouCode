@@ -45,7 +45,7 @@
 						<div class="modal-header bg-dark">
 							<h4 class="modal-title text-white">To do (<span id="to-do-tasks-count">5</span>)</h4>
 						</div>
-						<div id="to-do-parent">
+						<div class="parent" id="to-do-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
 								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
@@ -73,7 +73,7 @@
 						<div class="modal-header bg-dark">
 							<h4 class="modal-title text-white">In Progress (<span id="to-do-tasks-count">8</span>)</h4>
 						</div>
-						<div id="in-progress-parent">
+						<div class="parent" id="in-progress-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
 								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="to-do-box">
@@ -103,7 +103,7 @@
 						<div class="modal-header bg-dark">
 							<h4 class="modal-title text-white">In Progress (<span id="to-do-tasks-count">8</span>)</h4>
 						</div>
-						<div id="done-parent">
+						<div class="parent" id="done-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
 								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="in-progress-box">
@@ -207,43 +207,10 @@
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/data.js"></script>
+	<script src="assets/js/app.js"></script>
 	<script>
-			const finder = [
-				{
-					class  : 'to-do-parent',
-					status : 'To Do'
-				},
-				{
-					class  : 'in-progress-parent',
-					status : 'In Progress'
-				},
-				{
-					class  : 'done-parent',
-					status : 'Done'
-				}
-			];
-			// const classes = ['to-do-parent' , 'in-progress-parent' , 'done-parent'],
-			// 	  statuses = ['To Do' , 'In Progress' , 'Done'];
-			function show(data , selector , status) {
-
-				var parent = document.querySelector("#" + selector),
-					child = parent.querySelector("#tasks"),
-					title = child.querySelector('#title'),
-					date = child.querySelector('#date'),
-					description = child.querySelector('#description');
-				for(let row of data){
-					// var parent = document.querySelector("#" + classes[i]);
-					if(row.status == status){
-						title.innerText = row.title;
-						date.innerText = row.date;
-						description.innerText = row.description;
-						parent.innerHTML += child.innerHTML;
-					}
-				}
-			}
-			for(let find of finder){
-				show(tasks , find.class , find.status);
-			}
+		//---- Show All Tasks ----//
+			for(let find of finder){ show(tasks , find.class , find.status); }
 	</script>
 	<!-- ================== END core-js ================== -->
 </body>
