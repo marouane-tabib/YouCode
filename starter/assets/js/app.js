@@ -26,14 +26,6 @@ function add(){
     tasks.push(add);
     show(tasks , selector , status); 
 }
-// function createTask() {
-//     // initialiser task form
-
-//     // Afficher le boutton save
-
-//     // Ouvrir modal form
-    
-// }
 
 function saveTask() {
     // Recuperer task attributes a partir les champs input
@@ -94,12 +86,16 @@ function show(data , selector , status) {
     // Varaibles 
         let parent = document.querySelector("#" + selector),
             child = parent.querySelector("#tasks"),
+            // rename = parent.querySelector('#id'),
             title = child.querySelector('#title'),
             date = child.querySelector('#date'),
             description = child.querySelector('#description');
+        var i = 0;
     // Actions
         for(let row of data){
             if(row.status == status){
+                // i++;
+                // console.log(rename = i);
                 title.innerText = row.title;
                 date.innerText = row.date;
                 description.innerText = row.description;

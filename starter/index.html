@@ -48,11 +48,12 @@
 						<div class="parent" id="to-do-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
-								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
+								<button ondblclick="confirm('are you sure to delete') ? console.log(this) : alert('not deleted') " class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
 									<div class="col-2 col-md-1">
 										<i class="fa-regular fa-circle-question fa-2x text-success"></i>
 									</div>
 									<div class="text-start col">
+										<span id="id" hidden></span>
 										<div class="text-dark fw-bold" id="title">Keep all the updated requirements in one place</div>
 										<div class="">
 											<div class="list-item text-body" id="date">#1 created in 2022-10-08</div>
