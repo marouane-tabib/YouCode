@@ -81,20 +81,12 @@ function initTaskForm() {
     // Hide all action buttons
 }
 
-function generater(data){
-    let pointer = document.querySelector('#key');
-    for (let id = 0; id < data.length; id++) {
-        
-    console.log(pointer);
-                pointer.innerText = id;
-    }
-}
 
 function show(data , selector , status) {
     // Varaibles 
         let parent = document.querySelector("#" + selector),
             child = parent.querySelector("#tasks")
-            // pointer = parent.querySelector('#key'),
+            pointer = parent.querySelector('#key'),
             title = child.querySelector('#title'),
             date = child.querySelector('#date'),
             description = child.querySelector('#description');
@@ -102,7 +94,7 @@ function show(data , selector , status) {
     // Actions
         for(let row of data){
             if(row.status == status){
-                // pointer.innerText = id++;
+                pointer.innerText = row.id--;
                 title.innerText = row.title;
                 date.innerText = row.date;
                 description.innerText = row.description;
