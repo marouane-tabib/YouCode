@@ -3,6 +3,17 @@
  * 
  */
 
+//---- Generate Elements Index ----//
+//  function generator(){
+//     console.log(tasks);
+//     let pointer = document.querySelector('.key#key');
+//     // var i = 0;
+//     for(var i=0 ; i<tasks.length ; i++){
+//         let pointer = document.querySelector('.key#key');
+//         pointer.id = i;
+//         console.log(pointer);
+//     }
+//  }
 //---- Add Tasks ----//
 function add(){
     let model = document.querySelector('.modal');
@@ -85,20 +96,28 @@ function initTaskForm() {
 function show(data , selector , status) {
     // Varaibles 
         let parent = document.querySelector("#" + selector),
-            child = parent.querySelector("#tasks")
+            child = parent.querySelector("#tasks"),
             pointer = parent.querySelector('#key'),
             title = child.querySelector('#title'),
             date = child.querySelector('#date'),
-            description = child.querySelector('#description');
+            description = child.querySelector('#description'),
+            priority = child.querySelector('#priority'),
+            type = child.querySelector('#type'),
+            statusEl = child.querySelector('#status');
         var id = 0;
     // Actions
+        // parent.innerHTML ="";
         for(let row of data){
             if(row.status == status){
-                pointer.innerText = row.id--;
+                pointer.innerText = row.id;
                 title.innerText = row.title;
                 date.innerText = row.date;
                 description.innerText = row.description;
+                priority.innerText = row.priority;
+                type.innerText = row.type;
+                statusEl.innerText = row.status;
                 parent.innerHTML += child.innerHTML;
             }
+            id++;
         }
 }
