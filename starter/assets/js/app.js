@@ -125,7 +125,7 @@ function destroy(selector) {
             for (let index = 0 ; index < tasks.length ; index++) {
                 if(id == tasks[index].id){
                     tasks.splice(index, 1) ; break;
-                }else{ alert("Not find this record ") ; break}
+                }// else{ alert("Not find this record ") ; break}
             }
             selector.remove();
     }
