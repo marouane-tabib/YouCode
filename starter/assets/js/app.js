@@ -2,19 +2,11 @@
  * In this file app.js you will find all CRUD functions name.
  * 
  */
-
-//---- Generate Elements Index ----//
-//  function generator(){
-//     console.log(tasks);
-//     let pointer = document.querySelector('.key#key');
-//     // var i = 0;
-//     for(var i=0 ; i<tasks.length ; i++){
-//         let pointer = document.querySelector('.key#key');
-//         pointer.id = i;
-//         console.log(pointer);
-//     }
-//  }
 //---- Add Tasks ----//
+function starter(){
+    document.querySelector("form").reset();
+    $('#modal-task').modal('hide');
+}
 function add(){
     let model = document.querySelector('.modal');
         title = model.querySelector('#title').value,
@@ -35,6 +27,7 @@ function add(){
                 'description'   :   description
             };
     tasks.push(add);
+    starter();
     show(tasks , selector , status); 
 }
 
@@ -104,9 +97,8 @@ function show(data , selector , status) {
             priority = child.querySelector('#priority'),
             type = child.querySelector('#type'),
             statusEl = child.querySelector('#status');
-        var id = 0;
+        // var id = 0;
     // Actions
-        // parent.innerHTML ="";
         for(let row of data){
             if(row.status == status){
                 pointer.innerText = row.id;
@@ -118,6 +110,6 @@ function show(data , selector , status) {
                 statusEl.innerText = row.status;
                 parent.innerHTML += child.innerHTML;
             }
-            id++;
+            // id++;
         }
 }

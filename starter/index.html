@@ -221,13 +221,43 @@
 		//---- Destroy Task ----//
 		function destroy(selector) {
 			if(confirm('are you sure to delete')){
-				var id = selector.querySelector('.key').innerText,
-					status = selector.querySelector('#status').innerText;
-					for (let index = 0; index < tasks.length;) {
-						tasks[index].id == id ? tasks.splice(index, 1) : "";
+				let id = selector.querySelector('.key').innerText;
+					// status = selector.querySelector('#status').innerText;
+					// tasks.splice(id, 1);
+					// console.log("deleted" + selector.innerHTML);
+					// console.log(tasks);
+					console.log(id);
+					for (let index = 0 ; index < tasks.length ; index++) {
+						// console.log("index => "+ index);
+						// console.log(tasks[index]);
+						// console.log("le id deyal task mol had le index => " + tasks[index].id);
+						// console.log("le id deyal le task (element) => " + id);
+						// console.log(tasks);
+						if(id == tasks[index].id){
+							alert("hada hewa le id => " + id);
+							console.log(tasks);
+							tasks.splice(index, 1) ;
+							console.log(tasks); break;
+						}else{ alert("Not find this record ") ; break}
+						// tasks.splice(index , 1);
+						// if (condition) {
+							
+						// }
+						// tasks[index].id == id ? tasks.splice(index, 1) : console.log("not find this recored");
+						// if (tasks[index].id == id) {
+						// 	tasks.splice(index , 1) ; console.log("recored delted"); break;
+						// }else{ alert("Not Find This Record"); console.log("not delted"); break ;}
 					}
+					// for(let task of tasks){
+					// 	// task.id == id ? tasks.splice(id-1 , 1) : console.log("not find this recored");
+					// 	if (task.id == id) {
+					// 		tasks.splice(id-1 , 1) ; break;
+					// 	}else{ alert("Not Find This Record"); break}
+					// }
+					// console.log(tasks);
 					// daba fe le 7ala deyalk neta mesee7eti men le array , mese7e tani men DOM , makayn lach tejibe data men lewele ,o ga3e les record yejiw tani , Hhh awedi ya le programer awedi...
-				show(tasks , selector.id , status );
+				// show(tasks , selector.id , status );
+					selector.remove();
 			}
 		}
 	</script>
