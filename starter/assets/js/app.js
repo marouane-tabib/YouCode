@@ -2,11 +2,13 @@
  * In this file app.js you will find all CRUD functions name.
  * 
  */
-//---- Add Tasks ----//
 function starter(){
     document.querySelector("form").reset();
     $('#modal-task').modal('hide');
 }
+
+
+//---- Add Tasks ----//
 function add(){
     let model = document.querySelector('.modal');
         title = model.querySelector('#title').value,
@@ -86,6 +88,7 @@ function initTaskForm() {
 }
 
 
+//---- Show Tasks ----//
 function show(data , selector , status) {
     // Varaibles 
         let parent = document.querySelector("#" + selector),
@@ -97,7 +100,6 @@ function show(data , selector , status) {
             priority = child.querySelector('#priority'),
             type = child.querySelector('#type'),
             statusEl = child.querySelector('#status');
-        // var id = 0;
     // Actions
         for(let row of data){
             if(row.status == status){
@@ -110,6 +112,21 @@ function show(data , selector , status) {
                 statusEl.innerText = row.status;
                 parent.innerHTML += child.innerHTML;
             }
-            // id++;
         }
+}
+
+
+//---- Delete Task ----//
+function destroy(selector) {
+    if(confirm('are you sure to delete')){
+        // Variables
+            let id = selector.querySelector('.key').innerText;
+        // Action
+            for (let index = 0 ; index < tasks.length ; index++) {
+                if(id == tasks[index].id){
+                    tasks.splice(index, 1) ; break;
+                }else{ alert("Not find this record ") ; break}
+            }
+            selector.remove();
+    }
 }
