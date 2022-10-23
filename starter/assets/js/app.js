@@ -124,9 +124,9 @@ function destroy(selector) {
         // Action
             for (let index = 0 ; index < tasks.length ; index++) {
                 if(id == tasks[index].id){
-                    tasks.splice(index, 1) ; break;
-                }// else{ alert("Not find this record ") ; break}
+                    tasks.splice(index, 1) ;
+                    selector.remove(); break;
+                }
             }
-            selector.remove();
     }
 }
