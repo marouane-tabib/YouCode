@@ -7,6 +7,13 @@ function starter(){
     $('#modal-task').modal('hide');
 }
 
+$('#add-task').on('click' , function(){
+    document.querySelector("form").reset();
+    $('#update').hide(function(){
+        $("#delete").hide("slow");
+        $("#save").show("slow");
+    });
+});
 
 //---- Add Tasks ----//
 function add(){
@@ -19,8 +26,8 @@ function add(){
         description = model.querySelector('#description').value;
     var selector ;
     status == "To Do" ? selector = "to-do-parent" : status == "In Progress" ? selector =  "in-progress-parent" : selector = "done-parent";
-    let add = 
-            {
+    let add = {
+                'id'            :   tasks.length - 1,
                 'title'         :   title,
                 'type'          :   type,
                 'priority'      :   priority,
@@ -30,66 +37,30 @@ function add(){
             };
     tasks.push(add);
     starter();
-    show(tasks , selector , status); 
+    // show(tasks , selector , status); 
+        let Elparent = document.querySelector("#" + selector),
+            Elchild = Elparent.querySelector("#tasks"),
+            Elpointer = Elparent.querySelector('#key'),
+            Eltitle = Elchild.querySelector('#title'),
+            Eldate = Elchild.querySelector('#date'),
+            Eldescription = Elchild.querySelector('#description'),
+            Elpriority = Elchild.querySelector('#priority'),
+            Eltype = Elchild.querySelector('#type'),
+            ElstatusEl = Elchild.querySelector('#status');
+            
+            Elpointer.innerText = add.id;
+            Eltitle.innerText = title ;
+            Eldate.innerText = date ;
+            Eldescription.innerText = description;
+            Elpriority.innerText = priority;
+            Eltype.innerText = type;
+            ElstatusEl.innerText = status;
+            Elparent.innerHTML += Elchild.innerHTML;
+        
 }
-
-function saveTask() {
-    // Recuperer task attributes a partir les champs input
-
-    // Créez task object
-
-    // Ajoutez object au Array
-
-    // refresh tasks
-    
-}
-
-function editTask(index) {
-    // Initialisez task form
-
-    // Affichez updates
-
-    // Delete Button
-
-    // Définir l’index en entrée cachée pour l’utiliser en Update et Delete
-
-    // Definir FORM INPUTS
-
-    // Ouvrir Modal form
-}
-
-function updateTask() {
-    // GET TASK ATTRIBUTES FROM INPUTS
-
-    // Créez task object
-
-    // Remplacer ancienne task par nouvelle task
-
-    // Fermer Modal form
-
-    // Refresh tasks
-    
-}
-
-function deleteTask() {
-    // Get index of task in the array
-
-    // Remove task from array by index splice function
-
-    // close modal form
-
-    // refresh tasks
-}
-
-function initTaskForm() {
-    // Clear task form from data
-
-    // Hide all action buttons
-}
-
 
 //---- Show Tasks ----//
-function show(data , selector , status) {
+function show(data , selector , status , reload = false) {
     // Varaibles 
         let parent = document.querySelector("#" + selector),
             child = parent.querySelector("#tasks"),
@@ -100,6 +71,7 @@ function show(data , selector , status) {
             priority = child.querySelector('#priority'),
             type = child.querySelector('#type'),
             statusEl = child.querySelector('#status');
+        var i=1;
     // Actions
         for(let row of data){
             if(row.status == status){
@@ -113,12 +85,79 @@ function show(data , selector , status) {
                 parent.innerHTML += child.innerHTML;
             }
         }
+
 }
 
 
+//---- Edit Task Form ----//
+function edit(selector) {
+
+        $('#modal-task').modal('show');
+        $('#save').hide(function(){
+            $('#update').show('slow');
+            $('#delete').show('slow');
+        });
+        $('#delete').on('click' , function(){
+            destroy(selector);
+        });
+
+        // Variables
+            let id = selector.querySelector('.key').innerText;
+        // Action
+            for (let index = 0 ; index < tasks.length ; index++) {
+                if(id == tasks[index].id){
+                    // Varaibles 
+                        let model = document.querySelector('.modal'),
+                            title = model.querySelector('#title'),
+                            type = model.querySelector('.' + tasks[index].type),
+                            priority = model.querySelector('#priority').value = tasks[index].priority,
+                            status = model.querySelector('#status'),
+                            date = model.querySelector('#date'),
+                            description = model.querySelector('#description');
+                    // Action
+                        title.value = tasks[index].title;
+                        type.checked = true;
+                        priority.value = tasks[index].priority;
+                        status.value = tasks[index].status;
+                        date.value = tasks[index].date;
+                        description.value = tasks[index].description;
+                }
+            }
+            $('#update').on('click' , function(){
+                update(selector);
+            });
+}
+
+
+//---- Update Task ----//
+function update(selector){
+    // Variables
+        let id = selector.querySelector('.key').innerText;
+    // Action
+        for (let index = 0 ; index < tasks.length ; index++) {
+            if(id == tasks[index].id){
+                // Varaibles 
+                    let model = document.querySelector('.modal'),
+                        title = model.querySelector('#title'),
+                        type = model.querySelector('.' + tasks[index].type),
+                        priority = model.querySelector('#priority'),
+                        status = model.querySelector('#status'),
+                        date = model.querySelector('#date'),
+                        description = model.querySelector('#description');
+                // Action
+                    tasks[index].title = title.value;
+                    tasks[index].type = type.value;
+                    tasks[index].priority = priority.value;
+                    tasks[index].status = status.value;
+                    tasks[index].date = date.value;
+                    tasks[index].description = description.value;
+            }
+        }
+}
+
 //---- Delete Task ----//
 function destroy(selector) {
-    if(confirm('are you sure to delete')){
+        starter();
         // Variables
             let id = selector.querySelector('.key').innerText;
         // Action
@@ -128,5 +167,4 @@ function destroy(selector) {
                     selector.remove(); break;
                 }
             }
-    }
 }

@@ -35,7 +35,7 @@
 				</div>
 				
 				<div class="ml-auto">
-					<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-task"><i class="fa-solid fa-plus"></i> Add Task</a>
+					<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-task" id="add-task"><i class="fa-solid fa-plus"></i> Add Task</a>
 				</div>
 			</div>
 			
@@ -48,7 +48,7 @@
 						<div class="parent" id="to-do-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
-								<button ondblclick="destroy(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="to-do-parent">
+								<button ondblclick="destroy(this)" onclick="edit(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom task-button" id="to-do-parent">
 									<div class="col-2 col-md-1">
 										<i class="fa-regular fa-circle-question fa-2x text-success"></i>
 									</div>
@@ -78,7 +78,7 @@
 						<div class="parent" id="in-progress-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
-								<button ondblclick="destroy(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="in-progress-parent">
+								<button ondblclick="destroy(this)" onclick="edit(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom task-button" id="in-progress-parent">
 									<div class="col-2 col-md-1">
 										<div class="spinner-border spinner-border-sm text-warning" role="status">
 											<span class="visually-hidden">Loading...</span>
@@ -110,7 +110,7 @@
 						<div class="parent" id="done-parent">
 							<div class="" id="tasks">
 								<!-- TO DO TASKS HERE -->
-								<button ondblclick="destroy(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom" id="to-do-parent">
+								<button ondblclick="destroy(this)" onclick="edit(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom task-button" id="to-do-parent">
 									<div class="col-2 col-md-1">
 										<i class="fa-regular fa-circle-check fa-2x text-success"></i>
 									</div>
@@ -161,13 +161,13 @@
 					<div class="mb-4">
 					  <label for="type" class="form-label">Type</label>
 					  <div class="form-check">
-						<input class="form-check-input feature" type="radio" value="Feature" name="flexRadioDefault" id="type">
+						<input class="form-check-input Feature" type="radio" value="Feature" name="flexRadioDefault" id="type">
 						<label class="form-check-label" for="type">
 						  Feature
 						</label>
 					  </div>
 					  <div class="form-check">
-						<input class="form-check-input bug" type="radio" value="Bug" name="flexRadioDefault" id="type" checked>
+						<input class="form-check-input Bug" type="radio" value="Bug" name="flexRadioDefault" id="type" checked>
 						<label class="form-check-label" for="type">
 						  Bug
 						</label>
@@ -176,14 +176,15 @@
 					<div class="mb-3">
 					  <label for="priority" class="form-label">Priority</label>
 					  <select class="form-select" aria-label="Default select example">
-						<option id="priority" value="null" selected>Please select</option>
+						<option id="priority" value="null" >Please select</option>
 						<option id="priority" value="High">High</option>
+						<option id="priority" value="Low">Low</option>
 					  </select>
 					</div>
 					<div class="mb-3">
 					  <label for="status" class="form-label">Status</label>
 					  <select class="form-select" aria-label="Default select example">
-						<option id="status" value="null" selected>Please select</option>
+						<option id="status" value="null">Please select</option>
 						<option id="status" value="To Do">To Do</option>
 						<option id="status" value="In Progress">In Progress</option>
 						<option id="status" value="Done">Done</option>
@@ -201,7 +202,9 @@
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" id="save" class="btn btn-primary" onclick="add()">Save changes</button>
+				<button type="button" id="save" class="btn btn-primary" onclick="add()">Save Task</button>
+				<button type="button" id="delete" class="btn btn-danger">Delete Task</button>
+				<button type="button" id="update" class="btn btn-success">Update Task</button>
 			  </div>
 			</div>
 		  </div>
