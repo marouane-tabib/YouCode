@@ -20,8 +20,8 @@ function add(){
     let model = document.querySelector('.modal');
         title = model.querySelector('#title').value,
         type = model.querySelector('#type:checked').value,
-        priority = model.querySelector('#priority:checked').value,
-        status = model.querySelector('#status:checked').value,
+        priority = model.querySelector('#priority').value,
+        status = model.querySelector('#status').value,
         date = model.querySelector('#date').value,
         description = model.querySelector('#description').value;
     var selector ;
@@ -110,7 +110,7 @@ function edit(selector) {
                         let model = document.querySelector('.modal'),
                             title = model.querySelector('#title'),
                             type = model.querySelector('.' + tasks[index].type),
-                            priority = model.querySelector('#priority').value = tasks[index].priority,
+                            priority = model.querySelector('#priority'),
                             status = model.querySelector('#status'),
                             date = model.querySelector('#date'),
                             description = model.querySelector('#description');
