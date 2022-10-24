@@ -37,7 +37,9 @@ function add(){
             };
     tasks.push(add);
     starter();
-    // show(tasks , selector , status); 
+    // show(tasks , selector , status);
+    
+    // Not A Good Solition
         let Elparent = document.querySelector("#" + selector),
             Elchild = Elparent.querySelector("#tasks"),
             Elpointer = Elparent.querySelector('#key'),
@@ -151,8 +153,23 @@ function update(selector){
                     tasks[index].status = status.value;
                     tasks[index].date = date.value;
                     tasks[index].description = description.value;
+                // Not A good solution
+                let Eltitle = selector.querySelector('#title'),  
+                    Eldate = selector.querySelector('#date'),
+                    Eldescription = selector.querySelector('#description'),
+                    Elpriority = selector.querySelector('#priority'),
+                    Eltype = selector.querySelector('#type'),
+                    Elstatus = selector.querySelector('#status');
+
+                    Eltitle.innerText = tasks[index].title;
+                    Eltype.innerText = tasks[index].type;
+                    Elpriority.innerText = tasks[index].priority;
+                    Elstatus.innerText = tasks[index].status;
+                    Eldate.innerText = tasks[index].date;
+                    Eldescription.innerText = tasks[index].description;
             }
         }
+        starter();
 }
 
 //---- Delete Task ----//
