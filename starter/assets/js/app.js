@@ -9,7 +9,7 @@ function starter(){
 
 $('#add-task').on('click' , function(){
     document.querySelector("form").reset();
-    $('#update').hide(function(){
+    $('#update-btn').hide(function(){
         $("#delete").hide("slow");
         $("#save").show("slow");
     });
@@ -96,11 +96,15 @@ function edit(selector) {
 
         $('#modal-task').modal('show');
         $('#save').hide(function(){
-            $('#update').show('slow');
+            $('#update-btn').show('slow');
             $('#delete').show('slow');
         });
         $('#delete').on('click' , function(){
             destroy(selector);
+        });
+
+        $('#update-btn').one('click' , function(){
+            update(selector);
         });
 
         // Variables
@@ -125,9 +129,6 @@ function edit(selector) {
                         description.value = tasks[index].description;
                 }
             }
-            $('#update').on('click' , function(){
-                update(selector);
-            });
 }
 
 
