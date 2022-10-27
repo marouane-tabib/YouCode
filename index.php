@@ -1,5 +1,6 @@
 <?php
     include('includes/scripts.php');
+	$statues = ["To Do" , "In Progress" , "Done"]; 
 ?>
 
 <!DOCTYPE html>
@@ -251,19 +252,7 @@
 				</div>
 			<?php endif ?>
 			<div class="row">
-				<?php 
-				$statues = ["To Do" , "In Progress" , "Done"]; 
-				
-				foreach ($statues as $status) {
-						include('includes/assets/task_container.php');
-				}
-					// $status = "To Do";
-					// 	include('includes/assets/task_container.php');
-					// $status = "In Progress";
-					// 	include('includes/assets/task_container.php');
-					// $status = "Done";
-					// 	include('includes/assets/task_container.php');
-				?>
+				<?php foreach ($statues as $status) { include('includes/assets/task_container.php'); } ?>
 			</div>
 		</div>
 		<!-- END #content -->
