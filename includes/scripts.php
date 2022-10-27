@@ -3,20 +3,37 @@
     include('database.php');
     //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
     session_start();
-
+    // SELECT *
+    // FROM tasks
+    // CROSS JOIN types
+    // WHERE tasks.type_id=types.id;
     //ROUTING
     if(isset($_POST['save']))        saveTask($conn);
     if(isset($_POST['update']))      updateTask();
     if(isset($_POST['delete']))      deleteTask();
-    
+     
+    // JOINS
 
-    function getTasks()
+    function getTasks($conn)
     {
-        //CODE HERE
-        //SQL SELECT
-        echo "Fetch all tasks";
-    }
+            $sql = "SELECT * FROM tasks";
+            // $sql = "SELECT * 
+            //             FROM tasks
+            //             CROSS JOIN types
+            //             CROSS JOIN priorities
+            //             CROSS JOIN statuses
+            //             WHERE tasks.type_id		=	types.id        AND
+            //                 tasks.priority_id	=	priorities.id   AND
+            //                 tasks.status_id	    =	statuses.id";
+            $result = $conn->query($sql);
 
+            if ($result->num_rows > 0) {
+                return $result;
+
+            } else {
+                 echo "0 results";
+            } $conn->close();
+    }getTasks($conn);
 
     function saveTask($conn)
     {
