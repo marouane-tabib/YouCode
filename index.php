@@ -251,6 +251,8 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 				</div>
 			<?php endif ?>
+
+			<!-- Tasks Containers -->
 			<div class="row">
 				<?php foreach ($statues as $status) { include('includes/assets/task_container.php'); } ?>
 			</div>
@@ -284,11 +286,11 @@
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" type="radio" name="type" value="1" id="task-type-feature"/>
+										<input class="form-check-input" type="radio" name="type" value="Feature" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="type" value="2" id="task-type-bug"/>
+										<input class="form-check-input" type="radio" name="type" value="Bug" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>

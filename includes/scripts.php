@@ -8,8 +8,6 @@
     if(isset($_POST['save']))        saveTask($conn);
     if(isset($_POST['update']))      updateTask();
     if(isset($_POST['delete']))      deleteTask();
-     
-    // JOINS
 
     function getTasks($conn , $q)
     {
@@ -21,8 +19,8 @@
                 return $result;
             } else {
                  echo "0 results";
-                 echo $sql;
             } 
+            $conn->close();
     }
 
     function saveTask($conn)

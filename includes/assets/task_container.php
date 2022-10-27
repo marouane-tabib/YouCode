@@ -24,8 +24,8 @@
 											<div class="list-item" title=""><?php echo $row["description"] ?></div>
 										</div>
 										<div class="mt-3">
-											<span class="btn btn-primary btn-sm"><?php $row['priority'] ?></span>
-											<span class="btn btn-outline-secondary btn-sm"><?php $row['type'] ?></span>
+											<span class="btn btn-primary btn-sm"><?php echo $row['priority'] ?></span>
+											<span class="btn btn-outline-secondary btn-sm"><?php echo $row['type'] ?></span>
 										</div>
 									</div>
 								</button>
