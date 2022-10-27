@@ -1,6 +1,5 @@
 <?php
     include('includes/scripts.php');
-	$result = getTasks($conn);
 ?>
 
 <!DOCTYPE html>
@@ -252,81 +251,14 @@
 				</div>
 			<?php endif ?>
 			<div class="row">
-					
-				<div class="col-xl-4 col-lg-6">
-					<div class="panel panel-inverse">
-						<div class="panel-heading">
-							<h4 class="panel-title">To do (<span id="to-do-tasks-count">0</span>)</h4>
-							<div class="panel-heading-btn">
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
-							</div>
-						</div>
-						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0">
-							<!-- TO DO TASKS HERE -->
-							<?php while($row = $result->fetch_assoc()) { ?> 
-								<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
-									<div class="col-2 col-md-1">
-										<i class="fa-regular fa-circle-question fa-2x text-success"></i>
-									</div>
-									<div class="text-start col">
-										<div class="text-dark fw-bold"><?php echo $row["title"] ?></div>
-										<div class="">
-											<div class="list-item text-body">#1 created in <?php echo $row["task_datetime"] ?></div>
-											<div class="list-item" title=""><?php echo $row["description"] ?></div>
-										</div>
-										<div class="mt-3">
-											<span class="btn btn-primary btn-sm">High</span>
-											<span class="btn btn-outline-secondary btn-sm">Feature</span>
-										</div>
-									</div>
-								</button>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6">
-					<div class="panel panel-inverse">
-						<div class="panel-heading">
-							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">0</span>)</h4>
-							<div class="panel-heading-btn">
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
-							</div>
-						</div>
-						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="in-progress-tasks">
-							<!-- IN PROGRESS TASKS HERE -->
-							<?php
-								//PHP CODE HERE
-								//DATA FROM getTasks() FUNCTION
-							?>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6">
-					<div class="panel panel-inverse">
-						<div class="panel-heading">
-							<h4 class="panel-title">Done (<span id="done-tasks-count">0</span>)</h4>
-							<div class="panel-heading-btn">
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
-								<a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
-							</div>
-						</div>
-						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="done-tasks">
-							<!-- DONE TASKS HERE -->
-							<?php
-								//PHP CODE HERE
-								//DATA FROM getTasks() FUNCTION
-							?>
-						</div>
-					</div>
-				</div>
+				<?php 
+					$status = "To Do";
+						include('includes/assets/task_container.php');
+					$status = "In Progress";
+						include('includes/assets/task_container.php');
+					$status = "Done";
+						include('includes/assets/task_container.php');
+				?>
 			</div>
 		</div>
 		<!-- END #content -->
@@ -372,19 +304,19 @@
 								<label class="form-label">Priority</label>
 								<select class="form-select" name="priority" id="task-priority">
 									<option value="">Please select</option>
-									<option value="2">Low</option>
-									<option value="3">Medium</option>
-									<option value="4">High</option>
-									<option value="5">Critical</option>
+									<option value="Low">Low</option>
+									<option value="Medium">Medium</option>
+									<option value="High">High</option>
+									<option value="Critical">Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="status" id="task-status">
 									<option value="">Please select</option>
-									<option value="1">To Do</option>
-									<option value="2">In Progress</option>
-									<option value="3">Done</option>
+									<option value="To Do">To Do</option>
+									<option value="In Progress">In Progress</option>
+									<option value="Done">Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
