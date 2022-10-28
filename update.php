@@ -1,13 +1,6 @@
 <?php
     include('includes/scripts.php');
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM tasks WHERE id = $id";
-
-    $result = $conn->query($sql);
-    $result = $result->fetch_assoc();
-    
-    $_SESSION['id'] = $id;
-    $conn->close();
+    $result = edit($conn);
 ?>
 
 <!DOCTYPE html>

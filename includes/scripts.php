@@ -49,6 +49,16 @@
 		header('location: ../index.php');
     }
 
+    function edit($conn){
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM tasks WHERE id = $id";
+
+        $result = $conn->query($sql);
+        
+        $_SESSION['id'] = $id;
+        $conn->close();
+        return $result;
+    }
     function updateTask($conn)
     {
         //CODE HERE
