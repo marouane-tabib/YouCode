@@ -13,22 +13,24 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0">
 							<!-- TO DO TASKS HERE -->
 							<?php while($row = $data->fetch_assoc()) { ?> 
-								<button onclick="edit(this)" class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
-									<div class="col-2 col-md-1">
-										<i class="fa-regular fa-circle-question fa-2x text-success"></i>
-									</div>
-									<div class="text-start col">
-										<div class="text-dark fw-bold" id="title"><?php echo $row["title"] ?></div>
-										<div class="">
-											<div class="list-item text-body" id="date">#1 created in <?php echo $row["task_datetime"] ?></div>
-											<div class="list-item" id="description" title=""><?php echo $row["description"] ?></div>
+								<a href="update.php?id=<?php echo $row["id"]?>">
+									<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
+										<div class="col-2 col-md-1">
+											<i class="fa-regular fa-circle-question fa-2x text-success"></i>
 										</div>
-										<div class="mt-3">
-											<span class="btn btn-primary btn-sm" id="priority"><?php echo $row['priority'] ?></span>
-											<span class="btn btn-outline-secondary btn-sm" id="type"><?php echo $row['type'] ?></span>
+										<div class="text-start col">
+											<div class="text-dark fw-bold" id="title"><?php echo $row["title"] ?></div>
+											<div class="">
+												<div class="list-item text-body" id="date">#1 created in <?php echo $row["task_datetime"] ?></div>
+												<div class="list-item" id="description" title=""><?php echo $row["description"] ?></div>
+											</div>
+											<div class="mt-3">
+												<span class="btn btn-primary btn-sm" id="priority"><?php echo $row['priority'] ?></span>
+												<span class="btn btn-outline-secondary btn-sm" id="type"><?php echo $row['type'] ?></span>
+											</div>
 										</div>
-									</div>
-								</button>
+									</button>
+								</a>
 							<?php } ?>
 						</div>
 					</div>

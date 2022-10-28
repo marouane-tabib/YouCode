@@ -6,7 +6,7 @@
 
     //ROUTING
     if(isset($_POST['save']))        saveTask($conn);
-    if(isset($_POST['update']))      updateTask();
+    if(isset($_POST['update']))      updateTask($conn);
     if(isset($_POST['delete']))      deleteTask();
 
     function getTasks($conn , $q)
@@ -49,12 +49,30 @@
 		header('location: ../index.php');
     }
 
-    function updateTask()
+    function updateTask($conn)
     {
         //CODE HERE
+            $title = $_POST['title'];
+            $type = $_POST['type'];
+            $priority = $_POST['priority'];
+            $status = $_POST['status'];
+            $date = $_POST['date'];
+            $description = $_POST['description'];
+            $id = $_SESSION['id'];
         //SQL UPDATE
+            $sql = "UPDATE `tasks` SET
+            `title`='$title',`type`='$type',`priority`='$priority',`status`='$status',
+            `task_datetime`='$date',`description`='$description' WHERE id = $id";
+
+            if ($conn->query($sql) === TRUE) {
+            echo "Record updated successfully";
+            } else {
+            echo "Error updating record: " . $conn->error;
+            }
+        $conn->close();
+
         $_SESSION['message'] = "Task has been updated successfully !";
-		header('location: index.php');
+		header('location: ../index.php');
     }
 
     function deleteTask()
