@@ -12,8 +12,9 @@
 						</div>
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0">
 							<!-- TO DO TASKS HERE -->
+							
 							<?php while($row = $data->fetch_assoc()) { ?> 
-								<a href="update.php?id=<?php echo $row["id"]?>">
+								<a href="update.php?id=<?php echo $row["id"]?>" style="text-decoration: none;">
 									<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom">
 										<div class="col-2 col-md-1">
 											<i class="fa-regular fa-circle-question fa-2x text-success"></i>
@@ -30,7 +31,14 @@
 											</div>
 										</div>
 									</button>
-								</a>
+                            <a href="javascript:void(0)"
+                               onclick="if(confirm('Are You sure to delete this record?')){document.querySelector('#delete-task-<?php echo $row['id'] ?>').submit();} else {return false}"
+                               class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+							<form action="includes/scripts.php" method="post" class="d-none" id="delete-task-<?php echo $row['id'] ?>" >
+								<input type="hidden" name="delete" value="<?php echo $row['id'] ?>" >
+							</form>
 							<?php } ?>
 						</div>
 					</div>

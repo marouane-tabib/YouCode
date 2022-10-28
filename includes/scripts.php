@@ -7,7 +7,7 @@
     //ROUTING
     if(isset($_POST['save']))        saveTask($conn);
     if(isset($_POST['update']))      updateTask($conn);
-    if(isset($_POST['delete']))      deleteTask();
+    if(isset($_POST['delete']))      deleteTask($conn);
 
     function getTasks($conn , $q)
     {
@@ -86,12 +86,20 @@
 		header('location: ../index.php');
     }
 
-    function deleteTask()
+    function deleteTask($conn)
     {
         //CODE HERE
+            $id = $_POST['delete'];
         //SQL DELETE
-        $_SESSION['message'] = "Task has been deleted successfully !";
-		header('location: index.php');
+            $sql = "DELETE FROM `tasks` WHERE id=$id";
+        
+        if ($conn->query($sql) === TRUE) {
+                $_SESSION['message'] = "Task has been deleted successfully !";
+                header('location: ../index.php');
+        } else {
+            echo "Error deleting record: " . $conn->error;
+        }
+        $conn->close();
     }
 
 ?>
