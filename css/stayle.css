@@ -1,0 +1,38 @@
+/* a{
+    text-decoration: none;
+} */
+.parent-button:hover .actions-box{
+    display: flex;
+    transition: 1s;
+}
+.footer-task{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+.actions-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    position: absolute;
+    right: 0;
+}
+.actions-box a{
+    color: white;
+    background: #fb4141;
+    padding: 4px 8px;
+    border-radius: 50%;
+    box-shadow: -1px 4px 7px #0002;
+    margin: 3px 0;
+    transition: .6s;
+}
+.actions-box a:hover{
+    box-shadow: 1px 7px 10px #0001;
+    transform: scale(1.15);
+    transition: .6s;
+}
+.actions-box a:nth-child(2){
+    background-color: green;
+}

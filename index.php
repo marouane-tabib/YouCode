@@ -1,6 +1,9 @@
 <?php
     include('includes/scripts.php');
-	$statues = ["To Do" , "In Progress" , "Done"]; 
+	$statues = [
+		['status' => "To Do" 		, 'class' => 'fa-regular fa-circle-question fa-2x text-success'] ,
+		['status' => "In Progress" 	, 'class' => 'fa fa-spinner fa-1x text-success'] ,
+		['status' => "Done" 		, 'class' => 'fa-regular fa-circle-check fa-2x text-success']]; 
 ?>
 
 <!DOCTYPE html>
