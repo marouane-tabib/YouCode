@@ -17,7 +17,6 @@
 									<button class="bg-light row m-0 border-0 col-12 py-2 border-bottom parent-button">
 										<div class="col-2 col-md-1">
 											<i class="<?php echo $status['class'] ?>"></i>
-											<!-- <i class="fa-regular fa-circle-question fa-2x text-success"></i> -->
 										</div>
 										<div class="text-start col">
 											<div class="text-dark fw-bold" id="title"><?php echo $row["title"] ?></div>

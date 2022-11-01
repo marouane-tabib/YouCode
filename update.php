@@ -3,26 +3,21 @@
     $result = edit($conn);
 ?>
 
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-	<meta charset="utf-8" />
-	<title>YouCode | Scrum Board</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	
-	<!-- ================== BEGIN core-css ================== -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="assets/css/vendor.min.css" rel="stylesheet" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link href="css/stayle.css" rel="stylesheet" />
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
-	<!-- ================== END core-css ================== -->
-</head>
-<body>
-    <sction class="countainer py-4">
+  </head>
+  <body class="bg-grey">
+    <sction class="container py-4">
 				<form action="includes/scripts.php" method="POST" id="form-task">
-						<h5 class="modal-title">Add Task</h5>
 					<div class="container">
+						<h5 class="modal-title">Edit Task</h5><hr>
 							<!-- This Input Allows Storing Task Index  -->
 							<input type="hidden" id="task-id">
 							<div class="mb-3">
@@ -79,13 +74,6 @@
     </sction>
 	
 	<!-- ================== BEGIN core-js ================== -->
-	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	<!-- ================== END core-js ================== -->
-	<script src="js/scripts.js"></script>
-
-	<script>
-		//reloadTasks();
-	</script>
-</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
 </html>
