@@ -1,6 +1,6 @@
 <?php
     include('includes/scripts.php');
-    $result = edit($conn);
+    $result = getTask($conn);
 ?>
 
 <!doctype html>

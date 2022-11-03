@@ -11,7 +11,7 @@
 
     function getTasks($conn , $q)
     {
-            $sql = "SELECT * FROM tasks WHERE status = '$q'";
+            $sql = "SELECT  * FROM tasks WHERE status = '$q'";
 
             $result = $conn->query($sql);
 
@@ -21,6 +21,15 @@
                  echo "0 results";
             } 
             $conn->close();
+    }
+
+    function sumTasks($conn , $status){
+        $sql = "SELECT COUNT(*) as sum FROM tasks WHERE status = '$status'";
+
+        $result = $conn->query($sql);
+        $result = $result->fetch_assoc();
+        return $result;
+        $conn->close();
     }
 
     function saveTask($conn)
@@ -49,7 +58,7 @@
 		header('location: ../index.php');
     }
 
-    function edit($conn){
+    function getTask($conn){
         $id = $_GET['id'];
         $sql = "SELECT * FROM tasks WHERE id = $id";
 

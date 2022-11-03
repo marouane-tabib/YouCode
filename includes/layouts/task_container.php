@@ -2,7 +2,9 @@
                 <div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title"><?php echo $status['status'] ?> (<span id="to-do-tasks-count"></span>)</h4>
+							<h4 class="panel-title"><?php echo $status['status'] ?> (<span id="to-do-tasks-count">
+							<?php $result = sumTasks($conn , $status['status']) ; echo $result['sum']; ?>
+							</span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
